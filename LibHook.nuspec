@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>LibHook</id>
+    <version>1.0.0</version>
+    <title>LibHook for .NET</title>
+    <authors>Jeff Winn</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides resources for performing system level hooks within Windows.</description>
+    <copyright>Copyright (c) Jeff Winn. All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>LibHook SetWindowsHookEx</tags>
+  </metadata>
+  <files>
+    <!-- Build Files -->
+    <file src="x86\Release\LibHook.targets" target="build\LibHook.targets" />
+    
+    <!-- Help Files -->
+    <file src="x86\Release\Help\LibHook.chm" target="docs\LibHook.chm" />
+    
+    <!-- Binaries -->
+    <file src="x86\Release\libhook.dll" target="native\x86\libhook.dll" />
+    <file src="x64\Release\libhook.dll" target="native\x64\libhook.dll" />
+    <file src="x64\Release\Winnster.Interop.LibHook.dll" target="lib\net40\Winnster.Interop.LibHook.dll" />
+    <file src="x64\Release\Winnster.Interop.LibHook.xml" target="lib\net40\Winnster.Interop.LibHook.xml" />
+  </files>
+</package>

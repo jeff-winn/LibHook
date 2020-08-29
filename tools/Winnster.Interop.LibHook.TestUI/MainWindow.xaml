@@ -1,0 +1,45 @@
+﻿<Window x:Name="MainWindowControlRoot" x:Class="Winnster.Interop.LibHook.TestUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Winnster.Interop.LibHook.TestUI.ViewModels"
+        xmlns:app="clr-namespace:Winnster.Interop.LibHook.TestUI.Controls"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:galasoft="http://www.galasoft.ch/mvvmlight"
+        Title="System Hooks" Height="350" Width="525">
+    <Window.Resources>
+        <vm:MainWindowViewModel x:Key="vm"/>
+    </Window.Resources>
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <galasoft:EventToCommand Command="{Binding Loaded, Mode=OneWay, Source={StaticResource vm}}" PassEventArgsToCommand="False"/>
+        </i:EventTrigger>        
+        <i:EventTrigger EventName="Closing">
+            <galasoft:EventToCommand Command="{Binding Closing, Mode=OneWay, Source={StaticResource vm}}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid DataContext="{StaticResource vm}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+                   
+            <app:MouseHookInfoPane Grid.Row="0" />
+            <Border Grid.Row="1" BorderThickness="2" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" Height="2" Margin="5,0,5,0"/>
+            
+            <app:ShellHookInfoPane Grid.Row="2" />
+            <Border Grid.Row="3" BorderThickness="2" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" Height="2" Margin="5,0,5,0"/>
+            
+            <app:KeyboardHookInfo Grid.Row="4"/>
+        </Grid>
+    </Grid>
+</Window>

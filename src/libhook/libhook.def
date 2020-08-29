@@ -1,0 +1,8 @@
+LIBRARY libhook
+
+EXPORTS
+	InitHook
+	ReleaseHook
+	GetAppCommand
+	GetDevice
+	GetKeyState

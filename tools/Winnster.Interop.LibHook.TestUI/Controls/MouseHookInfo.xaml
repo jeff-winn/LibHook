@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Winnster.Interop.LibHook.TestUI.Controls.MouseHookInfoPane"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Winnster.Interop.LibHook.TestUI.ViewModels"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <vm:MouseHookInfoViewModel x:Key="vm"/>
+    </UserControl.Resources>
+    
+    <Grid DataContext="{StaticResource vm}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=ButtonTextBox}" VerticalAlignment="Center">Button:</Label>
+        <TextBox x:Name="ButtonTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding LastButton, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center"
+                     BorderThickness="0" FontWeight="Bold"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=ButtonStateTextBox}" VerticalAlignment="Center">State:</Label>
+        <TextBox x:Name="ButtonStateTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding LastButtonState, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center"
+                     BorderThickness="0" FontWeight="Bold"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Target="{Binding ElementName=XCoordinateTextBox}" VerticalAlignment="Center">X:</Label>
+        <TextBox x:Name="XCoordinateTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding LastXMouseMove, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center"
+                     BorderThickness="0" FontWeight="Bold"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Target="{Binding ElementName=YCoordinateTextBox}" VerticalAlignment="Center">Y:</Label>
+        <TextBox x:Name="YCoordinateTextBox" Grid.Row="4" Grid.Column="1" Text="{Binding LastYMouseMove, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center"
+                     BorderThickness="0" FontWeight="Bold"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Winnster.Interop.LibHook.TestUI.Controls.KeyboardHookInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Winnster.Interop.LibHook.TestUI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <vm:KeyboardHookInfoViewModel x:Key="vm"/>
+    </UserControl.Resources>
+    
+    <Grid DataContext="{StaticResource vm}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=KeyTextBox}" VerticalAlignment="Center">Key:</Label>
+        <TextBox x:Name="KeyTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding LastKeyEventData.Key, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center"
+                     BorderThickness="0" FontWeight="Bold"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=ScanCodeTextBox}" VerticalAlignment="Center">Scan Code:</Label>
+        <TextBox x:Name="ScanCodeTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding LastKeyEventData.ScanCode, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center"
+                     BorderThickness="0" FontWeight="Bold"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=TimestampTextBox}" VerticalAlignment="Center">Timestamp:</Label>
+        <TextBox x:Name="TimestampTextBox" Grid.Row="2" Grid.Column="1" Text="{Binding LastKeyEventData.Timestamp, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center"
+                     BorderThickness="0" FontWeight="Bold"/>
+    </Grid>
+</UserControl>
